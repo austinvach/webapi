@@ -2,20 +2,6 @@
 
 This is minimal sample of using the Alexa Web API for Games feature. It is laid out in a format compatible with the ASK command line interface tool. For more information, see: https://developer.amazon.com/en-US/docs/alexa/smapi/quick-start-alexa-skills-kit-command-line-interface.html Specifically this sample expects that you have already successfully configured the ask cli to deploy skills with a paired aws account through an aws cli profile.
 
-## How to deploy this sample
-- modify `ask-resources.json` and or `package.json` as described below to accomodate your ask profile configuration
-- ensure that the AWS profile you intend to use has sufficient permissions to deploy the infrastructure for this skill. If you are using an IAM Role or IAM User, make sure they have full permission to modify:
-  - Cloudformation, used to generate the infrastructure
-  - Lambda, to act as the compute backend for the skill
-  - Cloudwatch, to create logging targets for the Lambda
-  - S3, to host the web app
-  - IAM, used to create roles to limit the relationships between the above resources
-- use `npm run deploy` to initially build and deploy:
-  - the skill (to the Amazon developer portal), 
-  - the skill backend (to AWS Lambda), and 
-  - the web app (to AWS S3)
-- iterate and deploy by repeating calls to `npm run deploy`. In the case where you are only modifying the web app, you can reduce iteration time by calling `npm run deploy-webapp` directly
-
 ## Using profiles other than default
 This sample is configured to deploy to your `default` ask cli and aws cli profiles. If you opted not to have a default profile, or would like to deploy to an alternative profile, then you will need to:
 1. modify the ask-resources.json file to change the `profiles.default` key to a `profiles.yourProfileName` key instead.

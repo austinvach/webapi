@@ -5,35 +5,22 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speech = [ 'Welcome.' ];
-        
-        // we need to test whether the HTML capability is present at all, as we may be
-        // invoked on devices that don't have screens, or cannot support Web API
-        if ( Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.HTML'] ) {
-            
-            // if Web API is present, we can launch the web app using the HTML directive
+        // Checking for HTML support on device. If present, launch the web app.
+        if (Alexa.getSupportedInterfaces(handlerInput.requestEnvelope)['Alexa.Presentation.HTML']) {
             const startDirective = {
                 type:"Alexa.Presentation.HTML.Start",
                 request: {
-                    uri: `http://austinvach.com/webapi/`,
+                    uri: `https://austinvach.com/webapi/`,
                     method: "GET"
                 },
                 configuration: {
                    "timeoutInSeconds": 300
-                },
-                transformers: [
-                    {
-                        inputPath: "hintSource",
-                        outputName: "hint",
-                        transformer: "textToHint"
-                    }
-                ]
+                }
             }
             
-            speech.push('Loading the web app.');
             return handlerInput.responseBuilder
                 .addDirective(startDirective)
-                .speak(speech.join(' '))
+                .speak("Showtime Baby!")
                 // when using Web API, if we don't want to end the skill and 
                 // don't want to open the microphone, then we explicitly set
                 // end session to undefined
@@ -41,40 +28,11 @@ const LaunchRequestHandler = {
                 .getResponse();
                 
         } else {
-            
-            // otherwise it's ok to tell the customer that this skill won't work 
-            // on this device
-            speech.push("This device does not support Web API, so the Web API Hello World won't work on it.");
-            speech.push("Please try a different one.");
             return handlerInput.responseBuilder
-                .speak(speech.join(' '))
+                .speak("This skill is meant to be used on a device with a screen. Please try again on a different device.")
                 .withShouldEndSession(true)
                 .getResponse();      
         }
-    }
-};
-
-const HelloWorldIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
-    },
-    handle(handlerInput) {
-        // we'll respond to hello verbally
-        // and send a directive down to the web app
-        
-        const speakOutput = 'Hello You! And Hello Web';
-        const jsonMessage  = { "event": "HelloWorldIntentReceived" };
-        const handleMessageDirective = {
-            type:"Alexa.Presentation.HTML.HandleMessage",
-            message: jsonMessage
-        }
-        
-        return handlerInput.responseBuilder
-            .addDirective(handleMessageDirective)
-            .speak(speakOutput)
-            .withShouldEndSession(undefined)
-            .getResponse();
     }
 };
 
@@ -263,7 +221,6 @@ exports.handler = Alexa.SkillBuilders.custom()
     })
     .addRequestHandlers(
         LaunchRequestHandler,
-        HelloWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

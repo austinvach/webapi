@@ -10,6 +10,7 @@ const LaunchRequestHandler = {
             const startDirective = {
                 type:"Alexa.Presentation.HTML.Start",
                 request: {
+                    // The source code for this webpage is available at https://github.com/austinvach/webapi and is hosted on GitHub Pages.
                     uri: `https://austinvach.com/webapi/`,
                     method: "GET"
                 },

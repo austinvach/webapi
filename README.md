@@ -6,4 +6,4 @@ Check out https://developer.amazon.com/en-US/docs/alexa/web-api-for-games/alexa-
 
 ## Looking for a Better Sample Skill?
 
-Check out https://github.com/alexa-samples/skill-sample-nodejs-web-api-hello-world
+Check out https://github.com/alexa-samples/skill-sample-nodejs-web-api-hello-world. It's what I used to create this one.

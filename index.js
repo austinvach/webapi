@@ -126,13 +126,27 @@ bindButton('micButton', () => {
         printDebug('Cannot open the mic, Alexa is not ready.');
         return;
     }
+
+    printDebug('Before the IF');
+    if (alexaClient.voice) {
+        printDebug('Requesting the mic.');
+        alexaClient.voice.requestMicrophoneOpen({
+            onOpened: () => printDebug('The mic was opened.'),
+            onClosed: () => printDebug('The mic was closed.'),
+            onError: (err) => {
+                printDebug(err);
+            }
+        })
+    } else {
+        alexaClient.skill.sendMessage({ command: 'openMic' });
+    }
     
-    printDebug('Requesting the mic.');
-    alexaClient.voice.requestMicrophoneOpen({
-        onOpened: () => printDebug('The mic was opened.'),
-        onClosed: () => printDebug('The mic was closed.'),
-        onError: (err) => {
-            printDebug(err);
-        }
-    })
+    // printDebug('Requesting the mic.');
+    // alexaClient.voice.requestMicrophoneOpen({
+    //     onOpened: () => printDebug('The mic was opened.'),
+    //     onClosed: () => printDebug('The mic was closed.'),
+    //     onError: (err) => {
+    //         printDebug(err);
+    //     }
+    // })
 });

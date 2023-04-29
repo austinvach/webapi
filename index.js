@@ -128,6 +128,7 @@ bindButton('micButton', () => {
     }
 
     printDebug('Requesting the mic.');
+    printDebug('New fallback.');
     alexaClient.voice.requestMicrophoneOpen({
         onOpened: () => printDebug('The mic was opened.'),
         onClosed: () => printDebug('The mic was closed.'),

@@ -20,7 +20,7 @@ const LaunchRequestHandler = {
             
             return handlerInput.responseBuilder
                 .addDirective(startDirective)
-                .speak("Showtime Baby!")
+                .speak("It's showtime, baby!")
                 // when using Web API, if we don't want to end the skill and 
                 // don't want to open the microphone, then we explicitly set
                 // end session to undefined
@@ -229,5 +229,4 @@ exports.handler = Alexa.SkillBuilders.custom()
         SessionEndedRequestHandler)
     .addErrorHandlers(
         ErrorHandler)
-    .withCustomUserAgent('sample/hello-world/v1.2')
     .lambda();

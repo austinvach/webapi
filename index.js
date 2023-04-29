@@ -129,22 +129,22 @@ function bindButton( name, func ) {
 }
 
 bindButton('helloButton', () => {
-    sendMessage({speech:'Hello world', time: Date.now()});
+    sendMessage({speech:'Hello!', time: Date.now()});
 });
 
 bindButton('micButton', () => {
     if ( !alexaClient ) {
-        printDebug('cannot open the microphone, Alexa is not ready');
+        printDebug('Cannot open the microphone, Alexa is not ready');
         return;
     }
     
-    printDebug('requesting the microphone open');
+    printDebug('Requesting to open the microphone.');
     alexaClient.voice.requestMicrophoneOpen({
-        onOpened: () => printDebug('the microphone was opened'),
-        onClosed: () => printDebug('the microphone was closed'),
+        onOpened: () => printDebug('The microphone was opened.'),
+        onClosed: () => printDebug('The microphone was closed.'),
         onError: (err) => {
-            printDebug('failed to open the microphone:');
-            printDebug(err);
+            printDebug('Failed to open the microphone: ' + err);
+            // printDebug(err);
         }
     })
 });

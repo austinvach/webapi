@@ -22,6 +22,14 @@
         "interfaces": [
           {
             "type": "ALEXA_PRESENTATION_HTML"
+          },
+          {
+            "type": "ALEXA_EXTENSION",
+            "requestedExtensions": [
+              {
+                "uri": "alexaext:microphone:10"
+              }
+            ]
           }
         ]
       }

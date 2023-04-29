@@ -92,7 +92,7 @@ function sendMessage(msg){
     if ( alexaClient ) {
         alexaClient.skill.sendMessage(msg, messageSentCallback);
     } else {
-        printDebug(`Alexa was not ready, could not send message:`);
+        printDebug(`Alexa was not ready, could not send message.`);
         printDebug(msg);
     }
 }
@@ -123,7 +123,7 @@ bindButton('helloButton', () => {
 
 bindButton('micButton', () => {
     if ( !alexaClient ) {
-        printDebug('Cannot open the mic, Alexa is not ready');
+        printDebug('Cannot open the mic, Alexa is not ready.');
         return;
     }
     

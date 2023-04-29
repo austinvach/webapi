@@ -20,7 +20,7 @@ const LaunchRequestHandler = {
             
             return handlerInput.responseBuilder
                 .addDirective(startDirective)
-                .speak("It's showtime, baby!")
+                .speak("It's showtime!")
                 // when using Web API, if we don't want to end the skill and 
                 // don't want to open the microphone, then we explicitly set
                 // end session to undefined

@@ -35,12 +35,8 @@ const LaunchRequestHandler = {
             // if Web API is present, we can launch the web app using the HTML directive
             const startDirective = {
                 type:"Alexa.Presentation.HTML.Start",
-                data: {
-                    "someKey": "Initial start up information",
-                    "hintSource": "hello"
-                },
                 request: {
-                    uri: `${webAppRoot}/index.html`,
+                    uri: `http://austinvach.com/webapi/`,
                     method: "GET"
                 },
                 configuration: {

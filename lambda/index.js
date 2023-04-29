@@ -1,26 +1,5 @@
-// Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
-// Licensed under the Amazon Software License  http://aws.amazon.com/asl/
-
-/* *
- * This sample demonstrates handling intents from an Alexa skill using the Alexa Skills Kit SDK (v2).
- * Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
- * session persistence, api calls, and more.
- * */
 const Alexa = require('ask-sdk-core');
 
-/** Expect the full location of the web app to be provided as an environment variable */
-const webAppRoot = process.env.WEBAPP_S3_BUCKET_ROOT;
-
-if ( webAppRoot ) {
-    console.log(`will start HTML web app at ${webAppRoot}`)
-} else {
-    console.error(`*** ERROR *** No value specified in the WEB_URL environment varialbe, web app location unknown`)
-}
-
-/**
- * This handler is invoked whenever the customer cold launches the skill, e.g. "Alexa, open web API hello world"
- */
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';

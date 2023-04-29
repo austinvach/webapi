@@ -74,7 +74,7 @@ function messageReceivedCallback(message) {
  */
 const messageSentCallback = function(result) {
     if ( result.statusCode === 200 ) {
-        printDebug(`Message was sent to successfully.`);
+        printDebug(`Message was sent successfully.`);
     } else {
         printDebug(`Failed to send the message to the skill.`);
     }

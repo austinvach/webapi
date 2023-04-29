@@ -75,7 +75,6 @@ const LaunchRequestHandler = {
     }
 };
 
-
 const HelloWorldIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -99,7 +98,6 @@ const HelloWorldIntentHandler = {
             .getResponse();
     }
 };
-
 
 const HelpIntentHandler = {
     canHandle(handlerInput) {
@@ -178,7 +176,6 @@ const SessionEndedRequestHandler = {
     }
 };
 
-
 /**
  * Generic error handling to capture any syntax or routing errors. If you receive an error
  * stating the request handler chain is not found, you have not implemented a handler for
@@ -198,7 +195,6 @@ const ErrorHandler = {
             .getResponse();
     }
 };
-
 
 /**
  * In this skill, this intent asks Alexa to just repeat the phrase the user said. 
@@ -238,7 +234,6 @@ const RepeatAfterMeHandler = {
     }
 };
 
-
 /**
  * This is where messages sent from the web app will arrive. We'll look for specific
  * members in the message, and act accordingly
@@ -272,7 +267,6 @@ const ProcessHTMLMessageHandler = {
             .getResponse();
     }
 }
-
 
 /**
  * This handler acts as the entry point for your skill, routing all request and response

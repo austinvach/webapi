@@ -126,25 +126,13 @@ bindButton('micButton', () => {
         printDebug('Cannot open the mic, Alexa is not ready.');
         return;
     }
-
+    
     printDebug('Requesting the mic.');
-    printDebug('New fallback.');
     alexaClient.voice.requestMicrophoneOpen({
         onOpened: () => printDebug('The mic was opened.'),
         onClosed: () => printDebug('The mic was closed.'),
         onError: (err) => {
             printDebug(err);
-            printDebug("Trying fallback method")
-            alexaClient.skill.sendMessage({ command: 'openMic' });
         }
     })
-    
-    // printDebug('Requesting the mic.');
-    // alexaClient.voice.requestMicrophoneOpen({
-    //     onOpened: () => printDebug('The mic was opened.'),
-    //     onClosed: () => printDebug('The mic was closed.'),
-    //     onError: (err) => {
-    //         printDebug(err);
-    //     }
-    // })
 });

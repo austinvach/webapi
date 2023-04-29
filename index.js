@@ -1,8 +1,3 @@
-// Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
-// Licensed under the Amazon Software License  http://aws.amazon.com/asl/
-
-
 const debugElement = document.getElementById('debugElement');
 /**
  * Append text or any object that can be stringified to the debug element
@@ -18,8 +13,6 @@ function printDebug( msg ) {
     debugElement.scrollTo({top: debugElement.scrollHeight});
     console.log(msg);
 }
-
-
 
 /** @type {Alexa.AlexaClient} */
 let alexaClient;
@@ -55,8 +48,6 @@ Alexa.create({version: '1.1'})
 // to avoid blocking the first paint, we start code after the first frame
 requestAnimationFrame(beginApp);
 
-
-
 /**
  * Setup the hints display on screen procedurally, so we can 
  * interpolate in the wakeword
@@ -67,15 +58,13 @@ function setHints() {
         <p>or <i>"${wakeWord}, can you repeat..."</i> followed by something you'd like Alexa to say.</p>`
 }
 
-
-
 /**
  * Implements receiving a message from your skill backend
  * @param {any} message 
  */
 function messageReceivedCallback(message) {
   // Process message (JavaScript object) from your skill
-  printDebug('received a message from the skill endpoint');
+  printDebug('Received a message from the skill.');
   printDebug(message);
 }
 
@@ -85,9 +74,9 @@ function messageReceivedCallback(message) {
  */
 const messageSentCallback = function(result) {
     if ( result.statusCode === 200 ) {
-        printDebug(`message was sent to backend successfully`);
+        printDebug(`Message was sent to successfully.`);
     } else {
-        printDebug(`failed to send message to skill backend:`);
+        printDebug(`Failed to send the message to the skill.`);
     }
     printDebug(result);
 };
@@ -98,7 +87,7 @@ const messageSentCallback = function(result) {
  * @param {any} msg 
  */
 function sendMessage(msg){
-    printDebug(`sending message to skill endpoint:`);
+    printDebug(`Sending a message to the skill.`);
     printDebug(msg);
     if ( alexaClient ) {
         alexaClient.skill.sendMessage(msg, messageSentCallback);
@@ -134,17 +123,16 @@ bindButton('helloButton', () => {
 
 bindButton('micButton', () => {
     if ( !alexaClient ) {
-        printDebug('Cannot open the microphone, Alexa is not ready');
+        printDebug('Cannot open the mic, Alexa is not ready');
         return;
     }
     
-    printDebug('Requesting to open the microphone.');
+    printDebug('Requesting the mic.');
     alexaClient.voice.requestMicrophoneOpen({
-        onOpened: () => printDebug('The microphone was opened.'),
-        onClosed: () => printDebug('The microphone was closed.'),
+        onOpened: () => printDebug('The mic was opened.'),
+        onClosed: () => printDebug('The mic was closed.'),
         onError: (err) => {
-            printDebug('Failed to open the microphone: ' + err);
-            // printDebug(err);
+            printDebug(err);
         }
     })
 });

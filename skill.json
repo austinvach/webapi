@@ -3,13 +3,15 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "Web API Sample Skill",
-          "summary": "Hello World with Alexa Web API",
-          "description": "This is a deployment of the Alexa Web API sample skill.",
+          "name": "Web Sandbox",
+          "summary": "Experiment with the Web API for Games",
+          "description": "This skill uses the Web API for Games.",
           "examplePhrases": [
-            "Alexa open web api hello world"
+            "Alexa, open web sandbox"
           ],
-          "keywords": []
+          "keywords": [],
+          "smallIconUri": "file://assets/images/en-US_smallIconUri.png",
+          "largeIconUri": "file://assets/images/en-US_largeIconUri.png"
         }
       },
       "isAvailableWorldwide": true,

@@ -11,6 +11,8 @@ const LaunchRequestHandler = {
                 type:"Alexa.Presentation.HTML.Start",
                 request: {
                     // The source code for this webpage is available at https://github.com/austinvach/webapi and is hosted on GitHub Pages.
+                    // If needed, update the URI to point to the GitHub page associated with your repository.
+                    // https://docs.github.com/en/pages/quickstart
                     uri: `https://austinvach.com/webapi/`,
                     method: "GET"
                 },
